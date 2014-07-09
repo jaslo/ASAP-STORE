@@ -1,0 +1,31 @@
+{
+  "name": "ActiveScaler ASAP-STORE Provisioning Tool",
+  "version": "0.1.0",
+  "description": "ActiveScaler ASAP-STORE Provisioning Tool",
+  "keywords": [
+    "ActiveScaler",
+    "ASAP-STORE",
+    "Real-time platform",
+    "Cloud ready",
+    "provisioning tool",
+    "Amazong S3 compatible API",
+    "High performance"
+  ],
+  "author": "ActiveScaler Team <support@activescaler.com>",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/ActiveScaler/ASAP-STORE"
+  },
+  "dependencies": {
+    "ejs": "*",
+    "redis": "^0.10.3",
+    "underscore": "*"
+  },
+  "analyze": false,
+  "devDependencies": {},
+  "license": "EIP",
+  "engines": {
+    "node": ">=0.10"
+  },
+  "main": "index"
+}

@@ -1,0 +1,37 @@
+{
+  "name": "ASAP-STORE",
+  "version": "0.5.0",
+  "description": "ActiveScaler Acceleration Platform - Storage Module, High Performance Cloud Storage REST API compatible with Amazon S3",
+  "keywords": [
+    "private cloud",
+    "hybrid cloud",
+    "storage",
+    "S3 API",
+    "Ultra Fast performance",
+    "ASAP"
+  ],
+  "author": "ActiveScaler Inc. <admin@activescaler.com>",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/ActiveScaler/ASAP-STORE"
+  },
+  "dependencies": {
+    "forever": "*",
+    "fs-extra": "^0.10.0",
+    "hapi": "~6.0.x",
+    "hashring": "*",
+    "jsonfile": "^1.2.0",
+    "lineage": "^0.1.0",
+    "then-redis": "*",
+    "underscore": "^1.6.0",
+    "xml2js": ">= 0.4.x",
+    "xmlbuilder": "*",
+    "xmldoc": ">= 0.1.x"
+  },
+  "analyze": false,
+  "license": "EIP",
+  "engines": {
+    "node": ">=0.10"
+  },
+  "main": "index"
+}

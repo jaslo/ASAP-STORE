@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <title>ActiveScaler User Management</title>
+    
+    <script src="/public/javascripts/jquery-1.9.0.min.js"></script>
+    <script src="/public/javascripts/custom.js"></script>
+    <link rel="stylesheet" type="text/css" href="/public/stylesheets/style.css">
+</head>
+<body>
+  <div id="topHeader">
+    <div class="logoClass"> 
+        <img style="text-align:left;" src="http://activescaler.com/wp-content/uploads/2014/05/aslogo.png" alt="ActiveScaler"> 
+        <div class="slogan">ASAP User Key Manager</div>
+        <a class="btn btn-primary new pull-right" href='#quickModal', data-toggle='modal' data-target="#quickModal" style="font-size: 2em; font-weight: bold; line-height: 1em;font-size: 2em;font-weight: bold;line-height: 1em;display: inline;margin-right: 8px;margin-top: -48px;">
+                +
+            </a>
+    </div>
+   </div> 
+    <div class="container">
+        <div class="row" style="margin-top:15px;">
+            <div style="text-align: center;width: 90%;margin: 0 auto;">
+            
+            <%if (totalUsers > 0) { %>
+              <table style="width:100%;margin-left:10px;margin-top:46px;padding:0px;" class="table table-bordered table-hover table-striped">
+                <thead>
+                  <tr>
+                    <th style="width:15px;font-size: 1.5em;" class="text-center middle">#</th>
+                    <th style="width:120px;font-size: 1.5em;" class="text-center middle">Email id </th>
+                    <th style="width:120px;font-size: 1.5em;" class="text-center middle">App Key</th>
+                    <th style="width:150px;font-size: 1.5em;" class="text-center middle">Secret Key</th>
+                    <th style="width:10px;font-size: 1.5em;" class="text-center middle">Actions</th>
+                  </tr>
+                 </thead>     
+                 <tbody>
+                    <% 
+                    var i = 1;
+                    for(user in users) { 
+                        %>
+                    <tr id="<%=user.substring(2).replace("@", "").replace('.','')%>">
+                    <td style="width:15px;font-size: 15px;text-align:left;" ><%= i %>.</td>
+                        <td style="width:120px;font-size: 15px;text-align:left;" class="email"><%= user.substring(2) %></td>
+                        <td style="width:120px;font-size: 15px;text-align:left;"></td>
+                        <td style="width:150px;font-size: 15px;text-align:left;"></td>
+                        <td style="width:150px;font-size: 15px;text-align:left;"><button email="<%=user.substring(2)%>" class="btn btn-danger delete">Delete</button></td>
+                    </tr>    
+                    <%
+                    i++;
+                    }%>
+                  
+              <% } else { %>    
+                    <div id="msg">There is no user currently. Please add users by using Add Users button.</div>
+              <% } %>
+                
+                </tbody>
+              </table>
+            </div>
+        </div>
+        <div class="modal fade" id="quickModal" tabindex="-1" role="dialog" aria-labelledby="quickModel" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title" id="myModalLabel">Add User</h4>
+              </div>
+              <div class="modal-body">
+              <form class="form-horizontal">
+                <div class="control-group">
+                    <label class="control-label" for="inputEmail">Email</label>
+                    <div class="controls">
+                      <input type="text" id="inputEmail" placeholder="Email" style="width:100%;color:#0C395B;">
+                    </div>
+                  </div>
+                  <div class="control-group">
+                    <label class="control-label" for="inputPassword">Password</label>
+                    <div class="controls">
+                      <input type="password" id="inputPassword" placeholder="Password" style="width:100%;color:#0C395B;">
+                    </div>
+                </div>
+              </form>  
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary save">Save changes</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+    </div>
+    <script>
+        $('document').ready(function(){
+
+            $(".email").each(function(key, value){
+
+                $.getJSON( "/?action=load&email="+$(value).text())
+                  .done(function( json ) {
+                    $("#"+json.email.replace("@", "").replace('.','')+' td').eq(2).text(json.appKey);
+                    $("#"+json.email.replace("@", "").replace('.','')+' td').eq(3).text(json.secretKey);
+                    $("#"+json.email.replace("@", "").replace('.','')+' td').eq(4).text(json.creationDate);
+                  });
+            });
+
+        });
+          $('.delete').click(function(){
+            
+            $.getJSON( "/?action=delete&email="+$(this).attr('email'))
+              .done(function( json ) {
+                  location.reload();
+                });
+            });
+
+        $('.save').click(function(){
+            var error = 0;
+            if(!new RegExp(/\S+@\S+\.\S+/).test($("#inputEmail").val()))
+            {
+                $("#inputEmail").css('border-color','#F78181');
+                error = 1;
+            }
+            if($("#inputPassword").val().trim().length<=0)
+            {
+                $("#inputEmail").css('border-color','#F78181');
+                error = 1;
+            }
+            if(error == 0)
+            {
+               $.getJSON( "/?action=add&email="+$("#inputEmail").val()+"&password="+$("#inputPassword").val())
+              .done(function( json ) {
+                  location.reload();
+                });
+            }
+            else
+            {
+                return false;
+            }
+
+        });
+    </script>
+</body>
+</html>
