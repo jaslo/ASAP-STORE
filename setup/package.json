@@ -11,7 +11,7 @@
     "Amazong S3 compatible API",
     "High performance"
   ],
-  "author": "ActiveScaler Team <support@activescaler.com>",
+  "author": "ActiveScaler Team <info@activescaler.com>",
   "repository": {
     "type": "git",
     "url": "git://github.com/ActiveScaler/ASAP-STORE"
@@ -23,7 +23,7 @@
   },
   "analyze": false,
   "devDependencies": {},
-  "license": "EIP",
+  "license": "EPL",
   "engines": {
     "node": ">=0.10"
   },
