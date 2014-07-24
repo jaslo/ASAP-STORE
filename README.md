@@ -80,9 +80,11 @@ You can edit configuration options of ASAP-STORE by editing configuration file (
 | --------------------|:---------------------------------------------------------------------------------------:|
 
 ```
-In order to setup secure connection using HTTPS, you need to create SSL certificate and create PEM file. Please follow this tutorial or similer approcah to generate certificate and PEM files.
+In order to setup secure connection using HTTPS, you need to create SSL certificate and create PEM file. Please follow this tutorial or similer approcah to generate certificate and PEM files. We recommand to use 1024 bit or larger size rsa keys.
 
-[Creating SSL keys, CSRs, self-signed certificates, and .pem files] ( http://grahamc.com/blog/openssl-madness-how-to-create-keys-certificate-signing-requests-authorities-and-pem-files)
+[Creating SSL keys, CSRs, self-signed certificates, and .pem files] (http://grahamc.com/blog/openssl-madness-how-to-create-keys-certificate-signing-requests-authorities-and-pem-files)
+
+[OpenSSL Command-Line HOWTO] (http://www.madboa.com/geek/openssl/)
 
 <a name="Access-secret-keys"></a>
 
@@ -143,6 +145,7 @@ Right now, ActiveScaler supports most of the Amazon APIs, it is about to add sup
 <a name="s3-library"></a>
 
 ### S3 compatible Library with ASAP-STORE
+Most library and applicaitons are designed to work with ASAP-STORE solution and usually just need to change host name, key and secret only.
 
 * [PHP library] (https://github.com/aws/aws-sdk-php)
 * [JAVA library] (https://github.com/aws/aws-sdk-java)
