@@ -12,6 +12,8 @@ ActiveScaler Acceleration Platform - Storage Module ( High Performance Cloud Sto
 * [Compatible Amazon S3 Style REST APIs] (#supported-apis)
   * [Currently supported APIs] (#supported-partially-apis)
   * [Future APIs support Plan] (#supported-future-apis)
+  * [Features in Pro Version] (#pro-future-apis)
+  * [S3 compatible Library with ASAP-STORE] (#s3-library)
 * [Full API Documentation] (http://activescaler.com/docs)
 
 <a name="prerequisite"></a>
@@ -33,7 +35,7 @@ ActiveScaler Acceleration Platform - Storage Module ( High Performance Cloud Sto
 You can install `ASAP-STORE` by cloning it from git and extract it. After extraction, you need to run the following command:
 
 ```
-cd s3server && npm install
+cd ASAP-STORE && npm install
 
 This step will install all the necesary modules required to run the server.
 Please edit confuration file for your environment. Configuration options are described in next section.
@@ -78,6 +80,10 @@ You can edit configuration options of ASAP-STORE by editing configuration file (
 | --------------------|:---------------------------------------------------------------------------------------:|
 
 ```
+In order to setup secure connection using HTTPS, you need to create SSL certificate and create PEM file. Please follow this tutorial or similer approcah to generate certificate and PEM files.
+
+[Creating SSL keys, CSRs, self-signed certificates, and .pem files] ( http://grahamc.com/blog/openssl-madness-how-to-create-keys-certificate-signing-requests-authorities-and-pem-files)
+
 <a name="Access-secret-keys"></a>
 
 ## Populating default API and Secret keys for server
@@ -102,27 +108,50 @@ Right now, ActiveScaler supports most of the Amazon APIs, it is about to add sup
 * [Object upload, download and delete] (http://docs.aws.amazon.com/AmazonS3/latest/API/RESTObjectOps.html)
 * [Enabling versioning in bucket level and using versioning in object] (http://docs.aws.amazon.com/AmazonS3/latest/API/RESTBucketPUTVersioningStatus.html)
 * [Multipart upload, download object, Listing multipart object] (http://docs.aws.amazon.com/AmazonS3/latest/API/mpUploadInitiate.html)
+* [Tagging in bucket] (http://docs.aws.amazon.com/AmazonS3/latest/API/RESTBucketGETtagging.html)
+
 * Response content type
 
 <a name="supported-partially-apis"></a>
 
-### Partial implemented API with Amazon S3 compatibility ( To be completed Soon )
+### Partial implemented API with Amazon S3 compatibility 
 
 * [ACL implementation in bucket and object level] (http://docs.aws.amazon.com/AmazonS3/latest/API/RESTBucketPUTacl.html)
 * [Policy setup in bucket] (http://docs.aws.amazon.com/AmazonS3/latest/API/RESTBucketPUTpolicy.html) 
 * [Website features] (http://docs.aws.amazon.com/AmazonS3/latest/API/RESTBucketGETwebsite.html)
 * [Lifecycle management] (http://docs.aws.amazon.com/AmazonS3/latest/API/RESTBucketGETlifecycle.html) (Setting Expiration in bucket) 
-* [Tagging in bucket] (http://docs.aws.amazon.com/AmazonS3/latest/API/RESTBucketGETtagging.html)
+* [Location configuration in bucket] (http://docs.aws.amazon.com/AmazonS3/latest/API/RESTBucketGETlocation.html) 
+* [Notification in Bucket] (http://docs.aws.amazon.com/AmazonS3/latest/API/RESTBucketGETnotification.html)
+* [Bucket requestPayment] (http://docs.aws.amazon.com/AmazonS3/latest/API/RESTrequestPaymentPUT.html)
 
 <a name="supported-future-apis"></a>
 
 ### Planned Future enhancements
 
-* [Location configuration in bucket] (http://docs.aws.amazon.com/AmazonS3/latest/API/RESTBucketGETlocation.html) 
 * [Logging in Bucket] (http://docs.aws.amazon.com/AmazonS3/latest/API/RESTBucketGETlogging.html)
 * [CORS in Bucket] (http://docs.aws.amazon.com/AmazonS3/latest/API/RESTBucketGETcors.html)
-* [Notification in Bucket] (http://docs.aws.amazon.com/AmazonS3/latest/API/RESTBucketGETnotification.html)
-* [Bucket requestPayment] (http://docs.aws.amazon.com/AmazonS3/latest/API/RESTrequestPaymentPUT.html)
-* Monitoring Tool
-* Complete Web Auto provisioning tool
 
+<a name="pro-future-apis"></a>
+
+### Features in Pro Version
+
+* Complete Web provisioning tool
+* Real-Time Monitoring Tool
+* Billing Support
+* Geo distributed cluster management
+
+<a name="s3-library"></a>
+
+### S3 compatible Library with ASAP-STORE
+
+* [PHP library] (https://github.com/aws/aws-sdk-php)
+* [JAVA library] (https://github.com/aws/aws-sdk-java)
+* [JAVA eclips] (https://github.com/aws/aws-toolkit-eclipse)
+* [.NET library] (https://github.com/aws/aws-sdk-net)
+* [C Library API] (http://libs3.ischo.com.s3.amazonaws.com/index.html)
+* [Ruby library] (https://github.com/aws/aws-sdk-ruby)
+* [iOS SDK] (https://github.com/aws/aws-sdk-ios-v2)
+* [Android SDK] (https://github.com/aws/aws-sdk-android-v2)
+* [Python library] (https://github.com/boto/boto)
+* [NodeJS library] (https://github.com/aws/aws-sdk-js)
+* [Javascript library for Browser] (https://github.com/aws/aws-sdk-js)
